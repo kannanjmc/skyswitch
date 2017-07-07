@@ -1,7 +1,8 @@
 var yaml = require("node-yaml");
 var path = require("path");
-var fs = require("fs");
-var logFactory = require("./server/logfactory");
+
+var logFactory = require("./backend/logfactory");
+var banner = require("./backend/banner");
 
 var express = require("express");
 var app = express();
@@ -13,8 +14,7 @@ logFactory.level("debug");
 var log = logFactory.createLogger();
 
 // output start banner
-// eslint-disable-next-line no-console
-console.log(fs.readFileSync("banner.txt", "utf8"));
+banner.printBanner(log.info);
 
 app.use("/vendor", express.static(path.join(__dirname, "node_modules/angular")));
 app.use("/vendor", express.static(path.join(__dirname, "node_modules/angular-animate")));
