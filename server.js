@@ -25,6 +25,10 @@ app.use("/vendor", express.static(path.join(__dirname, "node_modules/angular-rou
 app.use("/vendor", express.static(path.join(__dirname, "node_modules/angular-messages")));
 app.use("/vendor", express.static(path.join(__dirname, "node_modules/jquery/dist")));
 
+app.use("/", express.static(path.join(__dirname, "node_modules/material-design-icons/iconfont")));
+app.use("/css", express.static(path.join(__dirname, "node_modules/font-awesome/css")));
+app.use("/fonts", express.static(path.join(__dirname, "node_modules/font-awesome/fonts")));
+
 app.use("/", express.static(path.join(__dirname, "dist")));
 
 app.listen(config.server.port, function () {

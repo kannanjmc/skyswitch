@@ -2,19 +2,81 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+  <link rel="stylesheet" href="material-icons.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="vendor/angular-material.min.css">
+	<link rel="stylesheet" href="css/app.min.css">
+
+  <script src="vendor/jquery.min.js"></script>
 
 	<script src="vendor/angular.min.js"></script>
 	<script src="vendor/angular-animate.min.js"></script>
 	<script src="vendor/angular-aria.min.js"></script>
+	<script src="vendor/angular-route.min.js"></script>
+	<script src="vendor/angular-resource.min.js"></script>
 	<script src="vendor/angular-messages.min.js"></script>
 
 	<script src="vendor/angular-material.min.js"></script>
 
   <script src="skyswitch.min.js"></script>
 </head>
-<body ng-app="SkyswitchApp" ng-cloak>
-  This is a test
+<body layout="row" ng-app="SkyswitchApp" ng-controller="NavigationController" ng-cloak>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" layout="column" md-component-id="menu" md-is-locked-open="$mdMedia('gt-md')">
+    <md-toolbar class="md-tall md-hue-2">
+      <span flex></span>
+      <div layout="column" class="md-toolbar-tools-bottom inset">
+        <user-avatar></user-avatar>
+        <span></span>
+        <div>Firstname Lastname</div>
+        <div>email@domainname.com</div>
+      </div>
+    </md-toolbar>
+    <md-list>
+      <md-list-item  ng-href="{{item.link}}" ng-repeat="item in menu">
+          <div class="inset">
+            <i class="material-icons">{{item.icon}}</i>
+          </div>
+          <div class="inset">{{item.title}}</div>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-subheader>Management</md-subheader>
+    </md-list>
+  </md-sidenav>
+
+  <div layout="column" class="relative" layout-fill role="main">
+      <md-button class="md-fab md-fab-bottom-right" aria-label="Add" ng-click="showAdd($event)">
+        <i class="material-icons">add</i>
+      </md-button>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <md-button ng-click="toggleMenu()" hide-gt-md aria-label="Menu">
+            <i class="material-icons">menu</i>
+          </md-button>
+          <span flex>Dashboard</span>
+
+          <md-input-container class="hide-validation-error" md-theme="input">
+            <input ng-model="search.query" placeholder="Search">
+          </md-input-container>
+          <md-button aria-label="Open Settings" ng-click="showListBottomSheet($event)">
+            <i class="material-icons">more_vert</i>
+          </md-button>
+        </div>
+        <md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
+          <md-tab id="tab1" aria-controls="tab1-content">
+            Latest
+          </md-tab>
+          <md-tab id="tab2" aria-controls="tab2-content">
+            Favorites
+          </md-tab>
+        </md-tabs>
+      </md-toolbar>
+
+      <!-- CONTENT -->
+      <md-content flex md-scroll-y>
+        <div ng-view></div>
+      </md-content>
+    </div>
 
 </body>
 </html>
