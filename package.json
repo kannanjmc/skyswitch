@@ -34,7 +34,7 @@
     "express": "^4.15.3",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "log": "^1.4.0",
+    "material-design-icons": "^3.0.1",
     "node-yaml": "^3.1.0",
     "winston": "^2.3.1"
   },
@@ -44,6 +44,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-minify": "^1.0.0",
     "gulp-ng-annotate": "^2.0.0",
+    "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
     "pump": "^1.0.2"
