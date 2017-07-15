@@ -2,9 +2,9 @@
   "name": "skyswitch",
   "version": "1.0.0",
   "description": "A togglz admin console",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "npm i & gulp & node server.js",
+    "start": "npm i & gulp & node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

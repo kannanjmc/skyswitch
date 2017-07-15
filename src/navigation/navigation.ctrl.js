@@ -1,6 +1,8 @@
 angular.module("SkyswitchApp")
 
-.controller("NavigationController", function($scope, $mdSidenav) {
+.controller("NavigationController", function($scope, $mdSidenav, $route) {
+  $scope.routeInfo = $route;
+
   $scope.menu = [
     {
       link : '#!/dashboard',

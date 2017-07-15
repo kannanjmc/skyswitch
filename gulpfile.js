@@ -11,7 +11,7 @@ var target = "dist";
 var sources = {
 	"js": ["src/app.js", "src/**/*.js"],
 	"static": ["src/**/*.html"],
-	"sass": ["src/**/*.scss"]
+	"sass": ["src/**/*.scss", "!**/_*.scss"]
 };
 
 gulp.task("static", function () {

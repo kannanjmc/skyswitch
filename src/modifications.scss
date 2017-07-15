@@ -1,0 +1,14 @@
+// align search bar properly
+.hide-validation-error {
+  .md-errors-spacer {
+    display: none;
+  }
+}
+
+md-input-container {
+  input {
+    .search {
+      color: #0f0;
+    }
+  }
+}
