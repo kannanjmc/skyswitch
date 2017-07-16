@@ -10,14 +10,14 @@ angular.module("SkyswitchApp")
       icon: 'dashboard'
     },
     {
-      link : '',
-      title: 'Servers',
-      icon: 'group'
+      link : '#!/applications',
+      title: 'Applications',
+      icon: 'apps',
     },
     {
-      link : '',
+      link : '#!/features',
       title: 'Features',
-      icon: 'message'
+      icon: 'transform'
     }
   ];
 

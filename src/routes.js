@@ -12,6 +12,16 @@ angular.module("SkyswitchApp")
         controller: 'DashboardController',
         title: 'Dashboard'
       })
+      .when('/features' , {
+        templateUrl: 'features/features.html',
+        controller: 'FeatureController',
+        title: 'Features'
+      })
+      .when('/applications', {
+        templateUrl: 'applications/applications.html',
+        controller: 'ApplicationController',
+        title: 'Applications'
+      })
       .otherwise('/');
 
 });
