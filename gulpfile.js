@@ -5,13 +5,15 @@ var ngAnnotate = require("gulp-ng-annotate");
 var pump = require('pump');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
+var util = require('gulp-util');
 
 var target = "dist";
 
 var sources = {
 	"js": ["src/app.js", "src/**/*.js"],
 	"static": ["src/**/*.html"],
-	"sass": ["src/**/*.scss"]
+	"sass": ["src/**/*.scss", "!**/_*.scss"],
+	"prod": util.env.production
 };
 
 gulp.task("static", function () {
@@ -22,7 +24,7 @@ gulp.task("static", function () {
 gulp.task('sass', function () {
   return gulp.src(sources.sass)
 		.pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(sass((sources.prod) ? {outputStyle: 'compressed'} : {}).on('error', sass.logError))
 		.pipe(concat("app.min.css"))
 		.pipe(sourcemaps.write("maps"))
 		.pipe(gulp.dest(target + "/css"));

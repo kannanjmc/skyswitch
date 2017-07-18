@@ -1,8 +1,8 @@
 var yaml = require("node-yaml");
 var path = require("path");
 
-var logFactory = require("./backend/logfactory");
-var banner = require("./backend/banner");
+var logFactory = require("./server/logfactory");
+var banner = require("./server/banner");
 
 var express = require("express");
 var app = express();

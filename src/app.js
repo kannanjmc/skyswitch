@@ -11,6 +11,4 @@
 angular.module("SkyswitchApp", ["ngResource", "ngRoute", "ngMaterial"])
 
 .config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('input', 'default')
-        .primaryPalette('light-blue');
 });

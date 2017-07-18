@@ -1,0 +1,16 @@
+@import "../scss/mixins";
+
+*[ng-controller="NavigationController"] {
+
+  .search {
+    color: rgba(255,255,255,0.4);
+  }
+
+  input {
+    border-color: transparent;
+    &.search, &.search:focus {
+      @include placeholderColor(rgba(255,255,255,0.4));
+      //color: #fff;
+    }
+  }
+}

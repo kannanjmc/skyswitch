@@ -1,5 +1,5 @@
 angular.module("SkyswitchApp")
 
-.controller("MainController", function($scope) {
+.controller("MainController", function($scope, $route) {
 
 });
