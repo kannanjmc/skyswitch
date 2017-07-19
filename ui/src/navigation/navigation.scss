@@ -7,8 +7,8 @@
   }
 
   input {
-    border-color: transparent;
     &.search, &.search:focus {
+      border-color: transparent;
       @include placeholderColor(rgba(255,255,255,0.4));
       //color: #fff;
     }

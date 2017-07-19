@@ -23,12 +23,10 @@
 <body layout="row" ng-app="SkyswitchApp" ng-controller="NavigationController" ng-cloak>
   <md-sidenav class="md-sidenav-left md-whiteframe-z2" layout="column" md-component-id="menu" md-is-locked-open="$mdMedia('gt-md')">
     <md-toolbar class="md-tall md-hue-2">
-      <span flex></span>
       <div layout="column" class="md-toolbar-tools-bottom inset">
-        <span></span>
-        <div></div>
-        <div></div>
+        <span>Skyswitch</span>
       </div>
+      <span flex></span>
     </md-toolbar>
     <md-list>
       <md-list-item  ng-href="{{item.link}}" ng-repeat="item in menu">

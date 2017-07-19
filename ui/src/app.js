@@ -10,5 +10,6 @@
 
 angular.module("SkyswitchApp", ["ngResource", "ngRoute", "ngMaterial"])
 
-.config(function($mdThemingProvider) {
+.config(function($mdThemingProvider, $mdIconProvider) {
+  $mdIconProvider.fontSet('md', 'material-icons');
 });
