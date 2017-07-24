@@ -16,6 +16,13 @@ public class ApiTokenServiceTest {
 	}
 	
 	@Test
-	public void testGenerate() {
+	public void testValidateNull() {
+		Assert.assertFalse(utt.isValid(null));
+	}
+	
+	@Test
+	public void testValidateEmpty() {
+		Assert.assertFalse(utt.isValid(""));
+		Assert.assertFalse(utt.isValid("  "));
 	}
 }
