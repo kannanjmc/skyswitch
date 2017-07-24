@@ -1,7 +1,5 @@
 package com.github.error418.skyswitch.api.security;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,21 +12,17 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	private static Logger log = LoggerFactory.getLogger(SecurityConfig.class);
 
 	@Autowired
 	private TokenAuthenticationProvider authenticationProvider;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		log.info("set auth provider");
 		auth.authenticationProvider(authenticationProvider);
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		log.info("Configuring Skyswitch API security");
-
 		http.antMatcher("/api/skyswitch/**")
 		.authorizeRequests()
 		.anyRequest()
