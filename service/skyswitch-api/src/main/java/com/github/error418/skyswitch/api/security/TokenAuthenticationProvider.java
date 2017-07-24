@@ -6,7 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 
-import com.github.error418.skyswitch.api.service.ApiTokenService;
+import com.github.error418.skyswitch.api.service.token.ApiTokenService;
 
 @Component
 public class TokenAuthenticationProvider implements AuthenticationProvider {

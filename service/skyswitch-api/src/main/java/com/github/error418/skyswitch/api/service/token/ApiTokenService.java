@@ -1,13 +1,11 @@
-package com.github.error418.skyswitch.api.service;
+package com.github.error418.skyswitch.api.service.token;
 
-import java.io.File;
-import java.io.IOException;
 import java.security.SecureRandom;
 
 import org.apache.commons.codec.binary.Hex;
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -15,7 +13,6 @@ import org.springframework.util.StringUtils;
 public class ApiTokenService {
 	
 	private static Logger log = LoggerFactory.getLogger(ApiTokenService.class);
-	private static String TOKEN_FILENAME = "./skyswitch-api-token";
 	
 	/**
 	 * Size of seed. Needs to be an even number.
@@ -25,14 +22,19 @@ public class ApiTokenService {
 	private SecureRandom secureRandom = new SecureRandom();
 	
 	private String currentToken;
+	private final TokenStorage tokenStorage;
 	
-	public ApiTokenService() {
-		File tokenFile = new File(TOKEN_FILENAME);
-		if(tokenFile.exists()) {
+	@Autowired
+	public ApiTokenService(TokenStorage tokenStorage) {
+		this.tokenStorage = tokenStorage;
+
+		if(tokenStorage.isInitialized()) {
 			try {
-				currentToken = FileUtils.readFileToString(tokenFile);
-				log.info("loaded skyswitch api token from file.");
-			} catch (IOException e) {
+				currentToken = tokenStorage.loadToken();
+				if(StringUtils.isEmpty(currentToken)) {
+					resetToken();
+				}
+			} catch (TokenStorageException e) {
 				log.warn("Failed to load skyswitch api token. Trying to generate a new one.");
 				resetToken();
 			}
@@ -40,6 +42,7 @@ public class ApiTokenService {
 			log.info("Token file was not found. Generating a new API token...");
 			resetToken();
 		}
+		
 	}
 
 	public void resetToken() {
@@ -49,9 +52,9 @@ public class ApiTokenService {
 		currentToken = Hex.encodeHexString(random);
 		
 		try {
-			FileUtils.writeStringToFile(new File(TOKEN_FILENAME), currentToken);
-		} catch (IOException e) {
-			log.warn("Could not write api token to file.", e);
+			tokenStorage.persistToken(currentToken);
+		} catch (TokenStorageException e) {
+			log.warn("could not persist api token", e);
 		}
 	}
 	

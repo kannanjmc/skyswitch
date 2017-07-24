@@ -2,8 +2,12 @@ package com.github.error418.skyswitch.api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
+import com.github.error418.skyswitch.api.service.token.TokenFileStorage;
+import com.github.error418.skyswitch.api.service.token.TokenStorage;
 
 
 /**
@@ -20,5 +24,11 @@ public class SkyswitchApiConfiguration {
 		log.info("Configuring Skyswitch API endpoints...");
 	}
 	
+	@Bean
+	public TokenStorage tokenStorageBean()
+	{
+		// TODO: inject bean by configuration
+	    return new TokenFileStorage();
+	}
 	
 }
