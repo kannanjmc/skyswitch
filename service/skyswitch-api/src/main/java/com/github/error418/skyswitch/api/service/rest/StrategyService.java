@@ -23,12 +23,11 @@ public class StrategyService {
 	@Autowired
 	public StrategyService(final FeatureManager manager) {
 		this.manager = manager;
-		
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<StrategyModel>> listStrategies() {
-		List<StrategyModel> result = new ArrayList<StrategyModel>();
+		List<StrategyModel> result = new ArrayList<>();
 		manager.getActivationStrategies().forEach(strategy -> result.add(new StrategyModel(strategy)));
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}

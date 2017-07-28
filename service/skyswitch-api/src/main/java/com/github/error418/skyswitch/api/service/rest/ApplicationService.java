@@ -2,14 +2,14 @@ package com.github.error418.skyswitch.api.service.rest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,12 +41,23 @@ public class ApplicationService {
 		return new ResponseEntity<>(featureStates, HttpStatus.OK);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value="{id}")
-	public ResponseEntity<?> modifyFeature(@PathParam("id") String featureId) {
-		Optional<Feature> feature = findFeature(featureId);
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<?> modifyFeature(@RequestBody FeatureStateModel featureState) {
+		Optional<Feature> feature = findFeature(featureState.getFeatureName());
 		if(feature.isPresent()) {
 			FeatureState state = manager.getFeatureState(feature.get());
 			
+			if(featureState.isEnabled() != null) {
+				state.setEnabled(featureState.isEnabled());
+			}
+			
+			state.setStrategyId(featureState.getStrategyId());
+			Map<String, String> parameters = featureState.getStrategyParameter();
+			if(parameters != null) {
+				parameters.entrySet().forEach(entry -> state.setParameter(entry.getKey(), entry.getValue()));
+			}
+			
+			manager.setFeatureState(state);
 			
 			return new ResponseEntity<>(HttpStatus.OK);
 		} else {
