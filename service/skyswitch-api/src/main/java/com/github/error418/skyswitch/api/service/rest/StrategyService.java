@@ -14,7 +14,7 @@ import org.togglz.core.manager.FeatureManager;
 
 import com.github.error418.skyswitch.api.model.StrategyModel;
 
-@RestController()
+@RestController
 @RequestMapping(value = "/api/skyswitch/strategy", produces = MediaType.APPLICATION_JSON_VALUE)
 public class StrategyService {
 

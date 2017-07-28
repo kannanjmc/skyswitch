@@ -19,7 +19,7 @@ import org.togglz.core.repository.FeatureState;
 
 import com.github.error418.skyswitch.api.model.FeatureStateModel;
 
-@RestController()
+@RestController
 @RequestMapping(value = "/api/skyswitch/feature", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ApplicationService {
 
