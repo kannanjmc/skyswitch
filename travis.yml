@@ -1,8 +1,0 @@
-language: java
-sudo: false
-jdk:
-  - openjdk8
-  - oraclejdk8
-script:
-  - cd service/skyswitch-api/
-  - mvn clean test
