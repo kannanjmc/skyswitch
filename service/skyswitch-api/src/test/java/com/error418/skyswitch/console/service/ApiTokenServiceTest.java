@@ -52,7 +52,6 @@ public class ApiTokenServiceTest {
 	
 	@Test
 	public void testInit() throws Exception {
-		
 		utt = new ApiTokenService(mockStorage);
 		Mockito.verify(mockStorage, Mockito.times(1)).loadToken();
 		Mockito.verify(mockStorage, Mockito.times(0)).persistToken(Mockito.anyString());
