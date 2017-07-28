@@ -1,4 +1,4 @@
-package com.error418.skyswitch.console.service;
+package com.error418.skyswitch.console.service.security;
 
 import org.junit.Assert;
 import org.junit.Before;
