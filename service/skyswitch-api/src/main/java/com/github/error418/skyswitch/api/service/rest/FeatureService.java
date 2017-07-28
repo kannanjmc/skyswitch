@@ -21,12 +21,12 @@ import com.github.error418.skyswitch.api.model.FeatureStateModel;
 
 @RestController
 @RequestMapping(value = "/api/skyswitch/feature", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ApplicationService {
+public class FeatureService {
 
 	private final FeatureManager manager;
 
 	@Autowired
-	public ApplicationService(final FeatureManager manager) {
+	public FeatureService(final FeatureManager manager) {
 		this.manager = manager;
 	}
 	
