@@ -27,7 +27,6 @@ public class SkyswitchApiConfiguration {
 	@Bean
 	public TokenStorage tokenStorageBean()
 	{
-		// TODO: inject bean by configuration
 	    return new TokenFileStorage();
 	}
 	
