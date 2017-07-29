@@ -39,4 +39,24 @@ public class FeatureStateModel {
 		return strategyParameter;
 	}
 
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public void setFeatureName(String featureName) {
+		this.featureName = featureName;
+	}
+
+	public void setStrategyId(String strategyId) {
+		this.strategyId = strategyId;
+	}
+
+	public void setStrategyParameter(Map<String, String> strategyParameter) {
+		this.strategyParameter = strategyParameter;
+	}
+
 }
