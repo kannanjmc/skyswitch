@@ -5,6 +5,9 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 
+/**
+ * Stores the token inside a file on the file system.
+ */
 public class TokenFileStorage implements TokenStorage {
 
 	private static final String DEFAULT_TOKEN_FILENAME = "./skyswitch-api-token";

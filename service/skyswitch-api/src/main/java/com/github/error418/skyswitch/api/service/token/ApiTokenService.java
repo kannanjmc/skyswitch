@@ -45,6 +45,10 @@ public class ApiTokenService {
 		
 	}
 
+	/**
+	 * Resets the token by generating a new one.
+	 * The new token will be persisted using the configured {@link TokenStorage}.
+	 */
 	public void resetToken() {
 		byte[] random = new byte[API_TOKEN_RAW_LENGTH];
 		secureRandom.nextBytes(random);
@@ -58,6 +62,12 @@ public class ApiTokenService {
 		}
 	}
 	
+	/**
+	 * Checks, if the given token is equal to the current api token.
+	 * 
+	 * @param checkToken token to check
+	 * @return true, if checkToken equals current api token
+	 */
 	public boolean isValid(String checkToken) {
 		if(StringUtils.isEmpty(checkToken)) {
 			return false;
