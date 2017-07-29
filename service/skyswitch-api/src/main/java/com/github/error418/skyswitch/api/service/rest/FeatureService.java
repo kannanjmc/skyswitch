@@ -42,7 +42,7 @@ public class FeatureService {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> modifyFeature(@RequestBody FeatureStateModel featureState) {
+	public ResponseEntity<Void> modifyFeature(@RequestBody FeatureStateModel featureState) {
 		Optional<Feature> feature = findFeature(featureState.getFeatureName());
 		if(feature.isPresent()) {
 			FeatureState state = manager.getFeatureState(feature.get());

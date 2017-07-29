@@ -19,7 +19,7 @@ public class AuthenticationToken implements Authentication {
 	public AuthenticationToken(String credentials, String... authorityNames) {
 		this.authenticated = false;
 		this.credentials = credentials;
-		this.authorities = new ArrayList<GrantedAuthority>();
+		this.authorities = new ArrayList<>();
 		
 		for(String authority : authorityNames) {
 			this.authorities.add(new SimpleGrantedAuthority(authority));

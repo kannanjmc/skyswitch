@@ -7,7 +7,7 @@ import org.apache.commons.io.FileUtils;
 
 public class TokenFileStorage implements TokenStorage {
 
-	private static String DEFAULT_TOKEN_FILENAME = "./skyswitch-api-token";
+	private static final String DEFAULT_TOKEN_FILENAME = "./skyswitch-api-token";
 	
 	private final File tokenFile;
 	

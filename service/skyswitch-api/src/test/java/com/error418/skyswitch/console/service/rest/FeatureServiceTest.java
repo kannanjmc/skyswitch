@@ -21,11 +21,11 @@ import com.github.error418.skyswitch.api.service.rest.FeatureService;
 public class FeatureServiceTest {
 
 	private static final String MOCK_FEATURE_NAME = "MockFeature";
+
 	private FeatureService utt;
 	private FeatureManager manager;
-	
 	private Feature mockFeature;
-	private FeatureState mockFeatureState;
+	private FeatureState mockFeatureState;	
 	
 	@Before
 	public void init() throws Exception {
