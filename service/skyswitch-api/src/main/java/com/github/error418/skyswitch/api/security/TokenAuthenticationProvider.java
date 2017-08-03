@@ -8,11 +8,16 @@ import org.springframework.stereotype.Component;
 
 import com.github.error418.skyswitch.api.service.token.ApiTokenService;
 
+
 @Component
 public class TokenAuthenticationProvider implements AuthenticationProvider {
 	
+	private final ApiTokenService tokenService;
+
 	@Autowired
-	private ApiTokenService tokenService;
+	public TokenAuthenticationProvider(final ApiTokenService tokenService) {
+		this.tokenService = tokenService;
+	}
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
