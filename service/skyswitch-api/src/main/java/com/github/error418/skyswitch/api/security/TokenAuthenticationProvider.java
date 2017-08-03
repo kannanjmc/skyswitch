@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 
 import com.github.error418.skyswitch.api.service.token.ApiTokenService;
 
-
+/** Authentication Provider for API tokems
+ * 
+ */
 @Component
 public class TokenAuthenticationProvider implements AuthenticationProvider {
 	
