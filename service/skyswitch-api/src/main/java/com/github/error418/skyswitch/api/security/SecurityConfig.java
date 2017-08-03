@@ -13,12 +13,18 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	private static final String SKYSWITCH_API_AUTHORITY = "SKYSWITCH_API";
+	
+	private final TokenAuthenticationProvider authenticationProvider;
+
 	@Autowired
-	private TokenAuthenticationProvider authenticationProvider;
+	public SecurityConfig(TokenAuthenticationProvider tokenAuthenticationProvider) {
+		this.authenticationProvider = tokenAuthenticationProvider;
+	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(authenticationProvider);
+		auth.authenticationProvider(this.authenticationProvider);
 	}
 
 	@Override
@@ -26,10 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.antMatcher("/api/skyswitch/**")
 		.authorizeRequests()
 		.anyRequest()
-		.hasAnyAuthority("SKYSWITCH_API")
+		.hasAnyAuthority(SKYSWITCH_API_AUTHORITY)
 		.and()
 		.addFilterBefore(new TokenAuthenticationFilter(), BasicAuthenticationFilter.class)
-		.authenticationProvider(authenticationProvider)
+		.authenticationProvider(this.authenticationProvider)
 		.sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().csrf();
