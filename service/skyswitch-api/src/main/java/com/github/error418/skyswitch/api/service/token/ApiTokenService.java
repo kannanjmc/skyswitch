@@ -35,11 +35,11 @@ public class ApiTokenService {
 					resetToken();
 				}
 			} catch (TokenStorageException e) {
-				log.warn("Failed to load skyswitch api token. Trying to generate a new one.");
+				log.warn("Failed to load skyswitch api token. Trying to generate a new one.", e);
 				resetToken();
 			}
 		} else {
-			log.info("Token file was not found. Generating a new API token...");
+			log.info("Token was not found. Generating new API token...");
 			resetToken();
 		}
 		
