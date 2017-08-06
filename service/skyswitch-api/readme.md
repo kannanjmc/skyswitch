@@ -26,3 +26,7 @@ public class MySpringBootApp {
 }
 
 ```
+
+## API
+
+Your application will publish ReST webservices secured by a token-based secret.
